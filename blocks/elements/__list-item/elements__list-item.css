@@ -1,0 +1,13 @@
+.elements__list-item {
+  max-width: 282px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1025px) {
+  .elements__list-item {
+    justify-self: center;
+  }
+}
