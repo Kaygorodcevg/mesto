@@ -1,11 +1,11 @@
 import initialCards from "./arrayCards.js";
-const addCardPopup = document.querySelector(".popup__add-card"); // попап добавления карточек
+const addCardPopup = document.querySelector(".popup_add-card"); // попап добавления карточек
 const addCardForm = addCardPopup.querySelector(".popup__form_add-card");
 const placeInput = addCardPopup.querySelector(".popup__input_place_name"); // поле ввода названия
 const urlInput = addCardPopup.querySelector(".popup__input_place_url"); // поле ввода ссылки
 const addCardCloseButton = document.querySelector(".popup__close-icon_add-card"); // кнопка закрытия
 const addCardButtom = document.querySelector(".profile__add-button"); // кнопка добавления карточек
-const popupZoomImage = document.querySelector(".popup__zoom-image"); //  Попап картинки
+const popupZoomImage = document.querySelector(".popup_zoom-image"); //  Попап картинки
 const popupFigcaption = popupZoomImage.querySelector(".popup__figcaption");
 const popupPicture = popupZoomImage.querySelector(".popup__picture");
 const pictureCloseButton = document.querySelector(".popup__close-icon_zoom-image"); // кнопка закрытия для картинки

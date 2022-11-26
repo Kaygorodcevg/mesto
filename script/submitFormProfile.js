@@ -1,4 +1,4 @@
-const editPopup = document.querySelector(".popup__profile");
+const editPopup = document.querySelector(".popup_profile");
 const closeButton = document.querySelector(".popup__close-icon");
 const editButton = document.querySelector(".profile__edit-button");
 const formElement = document.querySelector(".popup__form_profile"); //  Форма редактирования данных профиля
