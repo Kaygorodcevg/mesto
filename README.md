@@ -1,6 +1,6 @@
 # Mesto
 ## Проектная работа #4. Яндекс практикум.
-[Ссылка на GitHub](https://kaygorodcevg.github.io/mesto/)
+[Ссылка на проект](https://kaygorodcevg.github.io/mesto/)
 
 ### Технологии
 
