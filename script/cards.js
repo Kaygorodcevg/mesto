@@ -30,7 +30,7 @@ function openPopup(popup) {
 }
 
 // функция закрытия popup //
-function popupClose(popup) {
+function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
@@ -45,7 +45,7 @@ const deleteCard = (evt) => {
 };
 
 // popup открытия картинки //
-const popupZoomImageOpen = () => {
+const openPopupZoomImage = () => {
   openPopup(popupZoomImage);
 };
 
@@ -64,7 +64,7 @@ const createElement = (item) => {
 
   elementItem.querySelector(".elements__reaction").addEventListener("click", makeReaction);
   elementItem.querySelector(".elements__remove-button").addEventListener("click", deleteCard);
-  cardImage.addEventListener("click", popupZoomImageOpen); //  Попап открытия картинки
+  cardImage.addEventListener("click", openPopupZoomImage); //  Попап открытия картинки
 
   return elementItem;
 };
@@ -89,7 +89,7 @@ function editProfileForm(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  popupClose(editPopup);
+  closePopup(editPopup);
 }
 
 // Форма добавления карточки //
@@ -97,15 +97,15 @@ function addCard(evt) {
   evt.preventDefault();
   const composeForm = { name: placeInput.value, link: urlInput.value };
   renderElement(composeForm, elementsSection);
-  popupClose(addCardPopup);
+  closePopup(addCardPopup);
   placeInput.value = "";
   urlInput.value = "";
 };
 
 editButton.addEventListener("click", () => openPopup(editPopup));
-closeButton.addEventListener("click", () => popupClose(editPopup));
+closeButton.addEventListener("click", () => closePopup(editPopup));
 formElement.addEventListener("submit", editProfileForm);
 addCardButtom.addEventListener("click", () => openPopup(addCardPopup));
-addCardCloseButton.addEventListener("click", () => popupClose(addCardPopup));
-popupZoomImage.addEventListener("click", () => popupClose(popupZoomImage));
+addCardCloseButton.addEventListener("click", () => closePopup(addCardPopup));
+popupZoomImage.addEventListener("click", () => closePopup(popupZoomImage));
 addCardForm.addEventListener("submit", addCard);
