@@ -44,10 +44,10 @@ const deleteCard = (evt) => {
 };
 
 // popup открытия картинки //
-const openPopupZoomImage = (evt) => {
-  popupFigcaption.textContent = evt.target.closest(".elements__list-item").querySelector(".elements__text").textContent;
-  popupPicture.alt = evt.target.closest(".elements__list-item").querySelector(".elements__text").textContent;
-  popupPicture.src = evt.target.src;
+const openPopupZoomImage = (name, link) => {
+  popupFigcaption.textContent = name;
+  popupPicture.alt = name;
+  popupPicture.src = link;
   openPopup(popupZoomImage);
 };
 
@@ -60,7 +60,7 @@ const createElement = (item) => {
   cardImage.alt = item.name;
   cardImage.src = item.link;
 
-  cardImage.addEventListener("click", openPopupZoomImage); //  Попап открытия картинки
+  cardImage.addEventListener("click", () => openPopupZoomImage(item.name, item.link)); //  Попап открытия картинки
   elementItem.querySelector(".elements__reaction").addEventListener("click", makeReaction);
   elementItem.querySelector(".elements__remove-button").addEventListener("click", deleteCard);
   
