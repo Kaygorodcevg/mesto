@@ -59,27 +59,42 @@
         </li>
       </template>
 
-      <!-- popup -->
+      <!-- profile popup -->
       <div class="popup popup_profile">
         <div class="popup__container">
           <button type="button" class="popup__close-icon"></button>
-          <form name="editProfileForm" class="popup__form popup__form_profile">
+          <form
+            name="editProfileForm"
+            class="popup__form popup__form_profile"
+            novalidate>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              name="userName"
-              type="text"
-              value="Жак-Ив Кусто"
-              class="popup__input popup__input_type_name"
-              placeholder="Имя"
-              required>
-            <input
-              name="userJob"
-              type="text"
-              value="Исследователь океана"
-              class="popup__input popup__input_type_job"
-              placeholder="Профессия"
-              required>
-            <button class="popup__submit-button" type="submit">
+            <div class="popup__input-wrapper">
+              <input
+                id="name-input"
+                name="userName"
+                type="text"
+                value="Жак-Ив Кусто"
+                class="popup__input popup__input_type_name"
+                placeholder="Имя"
+                minlength="2"
+                maxlength="40"
+                required>
+              <span class="popup__input-error name-input-error"></span>
+            </div>
+            <div class="popup__input-wrapper">
+              <input
+                id="job-input"
+                name="userJob"
+                type="text"
+                value="Исследователь океана"
+                class="popup__input popup__input_type_job"
+                placeholder="Профессия"
+                minlength="2"
+                maxlength="200"
+                required>
+              <span class="popup__input-error job-input-error"></span>
+            </div>
+            <button disabled class="popup__submit-button" type="submit">
               Сохранить
             </button>
           </form>
@@ -91,23 +106,38 @@
         <div class="popup__container">
           <button
             type="button"
-            class="popup__close-icon popup__close-icon_add-card"
-          ></button>
-          <form name="addCardForm" class="popup__form popup__form_add-card">
+            class="popup__close-icon popup__close-icon_add-card">
+          </button>
+          <form
+            name="addCardForm"
+            class="popup__form popup__form_add-card"
+            novalidate>
             <h2 class="popup__title">Новое место</h2>
-            <input
-              name="placeName"
-              type="text"
-              class="popup__input popup__input_place_name"
-              placeholder="Название"
-              required>
-            <input
-              name="placeUrl"
-              type="text"
-              class="popup__input popup__input_place_url"
-              placeholder="Ссылка на картинку"
-              required>
-            <button class="popup__submit-button" type="submit">Создать</button>
+            <div class="popup__input-wrapper">
+              <input
+                name="placeName"
+                id="placeName-input"
+                type="text"
+                class="popup__input popup__input_place_name"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required>
+              <span class="popup__input-error placeName-input-error"></span>
+            </div>
+            <div class="popup__input-wrapper">
+              <input
+                name="placeUrl"
+                id="url-input"
+                type="url"
+                class="popup__input popup__input_place_url"
+                placeholder="Ссылка на картинку"
+                required>
+              <span class="popup__input-error url-input-error"></span>
+            </div>
+            <button disabled class="popup__submit-button" type="submit">
+              Создать
+            </button>
           </form>
         </div>
       </div>
@@ -117,8 +147,8 @@
         <div class="popup__zoom-wrapper">
           <button
             type="button"
-            class="popup__close-icon popup__close-icon_zoom-image"
-          ></button>
+            class="popup__close-icon popup__close-icon_zoom-image">
+          </button>
           <figure class="popup__figure">
             <img src="#" alt="" class="popup__picture">
             <figcaption class="popup__figcaption"></figcaption>
@@ -127,5 +157,6 @@
       </div>
     </div>
     <script type="module" src="./script/cards.js"></script>
+    <script src="./script/validate.js"></script>
   </body>
 </html>
