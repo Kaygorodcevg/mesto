@@ -1,16 +1,15 @@
 import initialCards from "./arrayCards.js";
 
-// import enableValidation from "./validate.js";
-
 // выбираем все popup для закрытия по Esc //
 const allPopups = document.querySelectorAll(".popup");
-// profile popup //
+// profile popup 
 const popupProfile = document.querySelector(".popup_profile");
 const editButton = document.querySelector(".profile__edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 // add cards popup //
 const buttonAddCard = document.querySelector(".profile__add-button"); // кнопка добавления карточек
+const submitButtonAddForm = document.querySelector(".popup__submit-button_cards");
 // image popup //
 const buttonOpenPopupCard = document.querySelector(".popup_add-card"); // кнопка открытия попапа добавления карточек
 const popupZoomImage = document.querySelector(".popup_zoom-image"); //  Попап картинки
@@ -31,14 +30,14 @@ const userJob = profileForm.elements.userJob;
 // функция открытия popup //
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown', closeByEsc);
-};
+  document.addEventListener("keydown", closeByEsc);
+}
 
 // функция закрытия popup //
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closeByEsc); 
-};
+  document.removeEventListener("keydown", closeByEsc);
+}
 
 // реакция //
 const makeReaction = (evt) => {
@@ -68,8 +67,7 @@ const createElement = (item) => {
   cardImage.src = item.link;
 
   cardImage.addEventListener("click", () =>
-    openPopupZoomImage(item.name, item.link)
-  ); //  Попап открытия картинки
+    openPopupZoomImage(item.name, item.link)); //  Попап открытия картинки
   elementItem.querySelector(".elements__reaction").addEventListener("click", makeReaction);
   elementItem.querySelector(".elements__remove-button").addEventListener("click", deleteCard);
 
@@ -97,59 +95,47 @@ function editProfileForm(evt) {
   profileTitle.textContent = userName.value;
   profileSubtitle.textContent = userJob.value;
   closePopup(popupProfile);
-}
+};
+
+// Деактивация кнопки добавления карточек //
+const blockAddCardsButton = () => {
+  submitButtonAddForm.classList.add("popup__submit-button_disabled");
+  submitButtonAddForm.disabled = true;
+};
 
 // Форма добавления карточки //
 function addCard(evt) {
   evt.preventDefault();
   const composeForm = { name: placeName.value, link: placeUrl.value };
   renderElement(composeForm, elementsSection);
-  closePopup(buttonOpenPopupCard);
   cardForm.reset();
-}
+  closePopup(buttonOpenPopupCard);
+};
 
 // закрытие popup по нажатию Esc //
-function closeByEsc (evt) {
+function closeByEsc(evt) {
   if (evt.key === "Escape") {
-    const openedPopup = document.querySelector('.popup_opened');
+    const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
   };
 };
 
 // закрытие popup через overlay и по крестику//
 allPopups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-          closePopup(popup);
-      };
-      if (evt.target.classList.contains('popup__close-icon')) {
-        closePopup(popup);
-      };
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close-icon")) {
+      closePopup(popup);
+    };
   });
 });
 
-const submitButtonAddForm = document.querySelector('.popup__submit-button')
-
-const handleAddFormButtonState = () => {
-  submitButtonAddForm.classList.add('popup__submit-button_disabled');
-  submitButtonAddForm.setAttribute("disabled", true);
-}
-
-
-
-
-
+buttonAddCard.addEventListener("click", () => {
+  blockAddCardsButton();
+  openPopup(buttonOpenPopupCard);
+});
 editButton.addEventListener("click", () => openPopup(popupProfile));
 profileForm.addEventListener("submit", editProfileForm);
 cardForm.addEventListener("submit", addCard);
-buttonAddCard.addEventListener("click", () => { 
-  handleAddFormButtonState();
-  openPopup(buttonOpenPopupCard);
-});
-
-
-
-
-
-
-
