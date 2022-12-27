@@ -7,9 +7,7 @@ class FormValidator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
     this._submitButtonSelector = data.submitButtonSelector;
-    this._inputList = Array.from(
-      this._form.querySelectorAll(this._inputSelector)
-    );
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
   };
 
@@ -46,12 +44,17 @@ class FormValidator {
   //Изменение состояния кнопки
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
-      this._buttonElement.classList.add(this._inactiveButtonClass);
-      this._buttonElement.disbaled = true;
+      this.disableSubmitButton();
     } else {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
       this._buttonElement.disabled = false;
     };
+  };
+
+  // Деактивация кнопки добавления карточек //
+  disableSubmitButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   };
 
   //добавить обработчики события инпут всем полям
@@ -62,6 +65,12 @@ class FormValidator {
         this._isValid(inputElement);
         this._toggleButtonState();
       });
+    });
+  };
+
+  resetValidationState() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
     });
   };
 

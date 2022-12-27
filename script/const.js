@@ -3,8 +3,7 @@ const popupFigcaption = popupZoomImage.querySelector(".popup__figcaption");
 const popupPicture = popupZoomImage.querySelector(".popup__picture");
 const popupCloseButton = document.querySelector(".popup__close-icon"); //  Кнопка закрытия popup
 const formList = Array.from(document.querySelectorAll(".popup__form"));
-// выбираем все popup для закрытия по Esc //
-const allPopups = document.querySelectorAll(".popup");
+const allPopups = document.querySelectorAll(".popup"); // выбираем все popup для закрытия по Esc 
 // profile popup
 const popupProfile = document.querySelector(".popup_profile");
 const editButton = document.querySelector(".profile__edit-button");
@@ -12,10 +11,8 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 // add cards popup //
 const buttonAddCard = document.querySelector(".profile__add-button"); // кнопка добавления карточек
-const submitButtonAddForm = document.querySelector(".popup__submit-button_cards");
-// image popup //
 const buttonOpenPopupCard = document.querySelector(".popup_add-card"); // кнопка открытия попапа добавления карточек
-
+const elementsList = document.querySelector(".elements__list");
 // forms //
 const cardForm = document.forms.addCardForm;
 const placeName = cardForm.elements.placeName;
@@ -32,11 +29,11 @@ const initialCards = [
   },
   {
     name: "Cape Town",
-    link: "https://images.unsplash.com/photo-1554280678-c139e7e9a5d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    link: "https://images.unsplash.com/photo-1671705782043-f3495bcfd522?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMzd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "Moscow",
-    link: "https://images.unsplash.com/photo-1495542779398-9fec7dc7986c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+    link: "https://images.unsplash.com/photo-1671686673740-894ef70768e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMzN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "Manhattan",
@@ -48,7 +45,7 @@ const initialCards = [
   },
   {
     name: "Sibiria",
-    link: "https://images.unsplash.com/photo-1544862406-24197fd5f58a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+    link: "https://images.unsplash.com/photo-1671820914661-a28b77586efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
   },
 ];
 
@@ -74,7 +71,6 @@ export {
   profileTitle,
   profileSubtitle,
   buttonAddCard,
-  submitButtonAddForm,
   buttonOpenPopupCard,
   cardForm,
   placeName,
@@ -83,4 +79,5 @@ export {
   userName,
   userJob,
   formList,
+  elementsList,
 };

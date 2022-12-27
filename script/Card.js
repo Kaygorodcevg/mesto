@@ -1,17 +1,12 @@
-import {
-  popupFigcaption,
-  popupPicture,
-  popupCloseButton,
-  popupZoomImage,
-} from "./const.js";
-import { openPopup, closePopup } from "./index.js";
+import { popupFigcaption, popupPicture, popupZoomImage } from "./const.js";
+import { openPopup, closePopup } from "./utils.js";
 
 class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-  };
+  }
 
   _getTemplate() {
     const cardElement = document
@@ -62,17 +57,14 @@ class Card {
       .addEventListener("click", () => {
         this._deleteCard();
       });
-
-    popupCloseButton.addEventListener("click", () => {
-      this._handleClosePopup();
-    });
   };
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector(".elements__image").src = this._link;
-    this._element.querySelector(".elements__image").alt = this._name;
+    this._image = this._element.querySelector(".elements__image");
+    this._image.src = this._link;
+    this._image.alt = this._name;
     this._element.querySelector(".elements__text").textContent = this._name;
     return this._element;
   };
