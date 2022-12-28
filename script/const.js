@@ -2,7 +2,6 @@ const popupZoomImage = document.querySelector(".popup_zoom-image"); //  Попа
 const popupFigcaption = popupZoomImage.querySelector(".popup__figcaption");
 const popupPicture = popupZoomImage.querySelector(".popup__picture");
 const popupCloseButton = document.querySelector(".popup__close-icon"); //  Кнопка закрытия popup
-const formList = Array.from(document.querySelectorAll(".popup__form"));
 const allPopups = document.querySelectorAll(".popup"); // выбираем все popup для закрытия по Esc 
 // profile popup
 const popupProfile = document.querySelector(".popup_profile");
@@ -11,7 +10,7 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 // add cards popup //
 const buttonAddCard = document.querySelector(".profile__add-button"); // кнопка добавления карточек
-const buttonOpenPopupCard = document.querySelector(".popup_add-card"); // кнопка открытия попапа добавления карточек
+const popupAddCard = document.querySelector(".popup_add-card"); // кнопка открытия попапа добавления карточек
 const elementsList = document.querySelector(".elements__list");
 // forms //
 const cardForm = document.forms.addCardForm;
@@ -71,13 +70,12 @@ export {
   profileTitle,
   profileSubtitle,
   buttonAddCard,
-  buttonOpenPopupCard,
+  popupAddCard,
   cardForm,
   placeName,
   placeUrl,
   profileForm,
   userName,
   userJob,
-  formList,
   elementsList,
 };

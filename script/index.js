@@ -11,14 +11,13 @@ import {
   profileTitle,
   profileSubtitle,
   buttonAddCard,
-  buttonOpenPopupCard,
+  popupAddCard,
   cardForm,
   placeName,
   placeUrl,
   profileForm,
   userName,
   userJob,
-  formList,
   elementsList,
 } from "./const.js";
 
@@ -32,10 +31,9 @@ function createCard(item) {
 function addCard(evt) {
   evt.preventDefault();
   const composeForm = { name: placeName.value, link: placeUrl.value };
-  createCard(composeForm);
   elementsList.prepend(createCard(composeForm));
   cardForm.reset();
-  closePopup(buttonOpenPopupCard);
+  closePopup(popupAddCard);
 };
 
 // функция создания карточек
@@ -48,7 +46,7 @@ initialCards.forEach((item) => {
 const editProfileFormValidation = new FormValidator(enableValidation, popupProfile);
 editProfileFormValidation.enableValidation();
 
-const addCardFormValidation = new FormValidator(enableValidation, buttonOpenPopupCard);
+const addCardFormValidation = new FormValidator(enableValidation, popupAddCard);
 addCardFormValidation.enableValidation();
 
 // Форма редактирования профиля //
@@ -59,37 +57,31 @@ function editProfileForm(evt) {
   closePopup(popupProfile);
 };
 
-// сброс ошибок валидации форм
-function resetFormState() {
-  cardForm.reset();
-  profileForm.reset();
-  editProfileFormValidation.resetValidationState();
-  addCardFormValidation.resetValidationState();
-};
-
 // закрытие popup через overlay и по крестику//
 allPopups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
-      resetFormState();
       closePopup(popup);
     }
     if (evt.target.classList.contains("popup__close-icon")) {
-      resetFormState();
       closePopup(popup);
     };
   });
 });
 
-// clicks
+// Обработчики
 buttonAddCard.addEventListener("click", () => {
   addCardFormValidation.disableSubmitButton();
-  openPopup(buttonOpenPopupCard);
+  cardForm.reset();
+  addCardFormValidation.resetValidationState();
+  openPopup(popupAddCard);
 });
 popupCloseButton.addEventListener("click", () => closePopup());
-editButton.addEventListener("click", () => openPopup(popupProfile));
-
-// submits
+editButton.addEventListener("click", () => {
+  profileForm.reset();
+  editProfileFormValidation.resetValidationState();
+  openPopup(popupProfile)
+});
 profileForm.addEventListener("submit", editProfileForm);
 cardForm.addEventListener("submit", addCard);
 
