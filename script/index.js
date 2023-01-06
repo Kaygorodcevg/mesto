@@ -85,3 +85,4 @@ editButton.addEventListener("click", () => {
 profileForm.addEventListener("submit", editProfileForm);
 cardForm.addEventListener("submit", addCard);
 
+// text for init 
