@@ -12,6 +12,8 @@ const profileSubtitle = document.querySelector(".profile__subtitle");
 const buttonAddCard = document.querySelector(".profile__add-button"); // кнопка добавления карточек
 const popupAddCard = document.querySelector(".popup_add-card"); // кнопка открытия попапа добавления карточек
 const elementsList = document.querySelector(".elements__list");
+const makeNewCardButton = document.querySelector(".popup__submit-button_cards");
+
 // forms //
 const cardForm = document.forms.addCardForm;
 const placeName = cardForm.elements.placeName;
@@ -78,4 +80,5 @@ export {
   userName,
   userJob,
   elementsList,
+  makeNewCardButton,
 };
